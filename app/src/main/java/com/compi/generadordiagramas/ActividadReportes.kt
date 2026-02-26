@@ -25,9 +25,9 @@ class ActividadReportes : AppCompatActivity() {
 
         /* ================= REPORTE OPERADORES ================= */
 
-        builder.append("═════════════════════════════════════════\n")
+        builder.append("════════════════════════════════════════\n")
         builder.append("             REPORTE DE OPERADORES\n")
-        builder.append("═════════════════════════════════════════\n\n")
+        builder.append("════════════════════════════════════════\n\n")
         builder.append("Cantidad operadores: ${DiagramDataHolder.operadores.size}\n\n")
         if (DiagramDataHolder.operadores.isEmpty()) {
 
@@ -58,37 +58,28 @@ class ActividadReportes : AppCompatActivity() {
 
             builder.append("\n\n")
         }
-/*
         /* ================= REPORTE ESTRUCTURAS ================= */
-        builder.append("═══════════════════════════════════════════════\n")
+        builder.append("════════════════════════════════════════\n")
         builder.append("          REPORTE DE ESTRUCTURAS\n")
-        builder.append("═══════════════════════════════════════════════\n\n")
+        builder.append("════════════════════════════════════════\n\n")
 
-       if (DiagramDataHolder.nodos.isEmpty()) {
-
+        if (DiagramDataHolder.estructuras.isEmpty()) {
             builder.append("No se encontraron estructuras de control.\n")
-
         } else {
+            builder.append(String.format("%-10s %-25s %-10s\n",
+                "Tipo", "Condición", "Indice"
+            ))
+            builder.append("----------------------------------------------\n")
 
-            builder.append(
-                String.format("%-15s %-25s\n",
-                    "Objeto", "Condición"
-                )
-            )
-
-            builder.append("--------------------------------------------------------------\n")
-
-            DiagramDataHolder.nodos.forEach {
-                builder.append(
-                    String.format(
-                        "%-15s %-8d %-25s\n",
-                        it.tipo,
-                        it.texto
-                    )
-                )
+            DiagramDataHolder.estructuras.forEach {
+                builder.append(String.format("%-10s %-30s %-10s \n",
+                    it.tipo,
+                    it.texto,
+                    it.indice
+                ))
             }
         }
-*/
+
         textView.text = builder.toString()
 
         setContentView(scroll)

@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                 // Guardamos datos para reporte y diagrama
                 DiagramDataHolder.nodos = result.nodos
                 DiagramDataHolder.operadores = result.operadores
+                DiagramDataHolder.estructuras = result.estructuras
 
                 outputView.text = "Analisis exitoso "
                 buttonRepo.isEnabled = true   // Se activa
@@ -118,10 +119,6 @@ class MainActivity : AppCompatActivity() {
 object DiagramDataHolder {
     var nodos = listOf<com.compi.compilador.NodoFlujo>()
     var operadores = listOf<com.compi.compilador.OperadorReporte>()
+    var estructuras = listOf<com.compi.compilador.EstructuraReporte>()
 }
 
-data class EstructuraControl(
-    val objeto: String,
-    val linea: Int,
-    val condicion: String
-)
